@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Нонтон — что сюда влезет</title>
+<style>
+  :root{
+    --accent:#d97757;
+    --ink:#1a1a1a;
+    --muted:#6b6b6b;
+    --line:#ebebeb;
+    --bg:#fafafa;
+    --card:#fff;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font:15px/1.5 -apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    -webkit-font-smoothing:antialiased;
+  }
+  header{
+    background:#fff;
+    border-bottom:1px solid var(--line);
+    padding:14px 20px;
+  }
+  .logo{font-weight:700;font-size:18px;letter-spacing:-.01em}
+  .logo span{color:var(--accent)}
+  .hint{
+    max-width:1200px;margin:0 auto;padding:20px;
+    color:var(--muted);font-size:13px;
+  }
+  .grid{
+    max-width:1200px;margin:0 auto;padding:0 20px 60px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  }
+  @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:600px){.grid{grid-template-columns:1fr;gap:18px}}
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .photo{
+    aspect-ratio:1/1;background:#f3f3f3;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .photo img{width:100%;height:100%;object-fit:contain;display:block}
+  .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:12px;flex:1}
+  .name{font-size:15px;font-weight:600;line-height:1.35;margin:0}
+  .dims{font-size:12px;color:var(--muted)}
+  .price{font-size:20px;font-weight:700;letter-spacing:-.01em}
+  .price small{font-size:12px;font-weight:400;color:var(--muted);margin-left:6px;text-decoration:line-through}
+
+  .capacity{
+    background:#fff7f3;
+    border:1px solid #f3dcd0;
+    border-radius:8px;
+    padding:14px 14px 12px;
+  }
+  .capacity h3{
+    margin:0 0 10px;font-size:13px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.04em;color:var(--accent);
+  }
+  .scenario{display:flex;gap:10px;margin-bottom:8px;font-size:13.5px;line-height:1.45}
+  .scenario:last-of-type{margin-bottom:10px}
+  .scenario .who{flex:0 0 72px;font-weight:600;color:var(--ink)}
+  .scenario .what{color:#2a2a2a}
+  .ref{
+    border-top:1px dashed #e8c9b8;
+    padding-top:9px;margin-top:4px;
+    font-size:12.5px;color:#7a4a36;font-style:italic;
+  }
+
+  .cta{
+    background:var(--accent);color:#fff;border:0;
+    padding:11px 14px;border-radius:6px;
+    font:600 14px/1 inherit;cursor:pointer;width:100%;
+  }
+  .cta:hover{background:#c46a4d}
+
+  .reviews{font-size:13px;border-top:1px solid var(--line);padding-top:12px}
+  .reviews h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600}
+  .review{margin-bottom:8px;line-height:1.4;color:#333}
+  .review:last-child{margin-bottom:0}
+  .review .stars{color:#f5a623;letter-spacing:1px;font-size:11px;display:block;margin-bottom:2px}
+  .review .who2{color:var(--muted);font-size:11px}
+
+  .specs{font-size:11.5px;color:var(--muted);line-height:1.5;border-top:1px solid var(--line);padding-top:10px}
+
+  footer{max-width:1200px;margin:0 auto;padding:30px 20px 50px;color:var(--muted);font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">нонтон<span>.</span></div>
+</header>
+
+<div class="hint">
+  Прототип карточки с блоком вместимости. Шесть товаров — три шкафа и три комода.
+</div>
+
+<div class="grid" id="grid"></div>
+
+<footer>Прототип для внутренней презентации. Цены и фото — с nonton.ru</footer>
+
+<script>
+const SKU = [
+  {
+    id:"sku-w1",
+    name:"Шкаф-купе Блек-Лайт 2,5 — графит / лакобель",
+    dims:"200 × 60 × 220 см",
+    price:"34 990 ₽",
+    oldPrice:"42 990 ₽",
+    img:"images/sku-w1.jpg",
+    capacity:{
+      solo:"18 рубашек на штанге, 16 свитеров стопками, коробка обуви. Половина шкафа свободна",
+      couple:"36 рубашек, 26 свитеров, 3 коробки обуви, 2 сумки на антресоли",
+      family:"взрослый гардероб на штанге, детская секция на боковых полках, 4 коробки и чемодан сверху"
+    },
+    ref:"Гардероб на двоих на сезон + место для постельного. Как шкаф 200 см в спальню",
+    reviews:[
+      {stars:"★★★★★", text:"Брали в спальню, влезло все наше с мужем + сезонные куртки. Думала будет тесно — нет, ещe полки свободные.", who:"Анна, март 2026"},
+      {stars:"★★★★★", text:"Шкаф огромный, рубашек у меня штук 30, все встало на штангу свободно. Сборка норм.", who:"Игорь, февраль 2026"}
+    ]
+  },
+  {
+    id:"sku-w2",
+    name:"Шкаф-купе Лорд 4-дверный — белый",
+    dims:"240 × 55 × 220 см",
+    price:"39 990 ₽",
+    oldPrice:null,
+    img:"images/sku-w2.jpg",
+    capacity:{
+      solo:"24 рубашки на штанге, 40 футболок и свитеров стопками, коробка обуви. Свободны 2 полки",
+      couple:"38 рубашек, 52 свитера стопками, 3 коробки обуви, 2 сумки",
+      family:"взрослые вещи на штанге, детские вещи на нижних полках, 4 коробки и чемодан"
+    },
+    ref:"Гардероб на семью на сезон + крупные коробки и чемодан",
+    reviews:[
+      {stars:"★★★★☆", text:"Четыре двери — это удобно, у каждого своя секция. Зеркало в центре пригодилось.", who:"Ольга, январь 2026"},
+      {stars:"★★★★★", text:"Покупали под двоих + ребeнок, влезло все включая постельное и игрушки в коробках сверху.", who:"Дмитрий, апрель 2026"}
+    ]
+  },
+  {
+    id:"sku-w3",
+    name:"Шкаф-купе Денвер 3-дверный — белый / сонома",
+    dims:"180 × 55 × 220 см",
+    price:"27 490 ₽",
+    oldPrice:"32 990 ₽",
+    img:"images/sku-w3.jpg",
+    capacity:{
+      solo:"22 рубашки на штанге, 25 футболок стопками, коробка обуви. Много свободного места",
+      couple:"35 рубашек, 40 свитеров, 2 коробки обуви, 1 сумка",
+      family:"взрослый гардероб на штанге, детская секция на полке, 3 коробки и чемодан сверху"
+    },
+    ref:"Базовый гардероб на одного с большим запасом. Для пары — впритык, но влезет",
+    reviews:[
+      {stars:"★★★★★", text:"Брала для съeмной квартиры, по объeму как мой старый шкаф плюс ещe столько же. Цена приятная.", who:"Юлия, март 2026"},
+      {stars:"★★★★☆", text:"Хороший шкаф за свои деньги. Сонома по цвету как на фото.", who:"Алексей, февраль 2026"}
+    ]
+  },
+  {
+    id:"sku-d1",
+    name:"Комод Эккервуд 4 ящика — графит",
+    dims:"80 × 40 × 85 см",
+    price:"8 490 ₽",
+    oldPrice:null,
+    img:"images/sku-d1.jpg",
+    capacity:{
+      solo:"15 футболок, 10 пар носков и белья, 8 свитеров, 5 джинсов. Ящики наполовину свободны",
+      couple:"30 футболок, 25 пар носков, 20 свитеров, 18 джинсов. Ящики почти полные",
+      family:"взрослое белье в верхних 2 ящиках, детские вещи и мелочи в нижних"
+    },
+    ref:"Базовое белье и трикотаж на одного с запасом. Для семьи маловат",
+    reviews:[
+      {stars:"★★★★★", text:"Компактный, но вместительный. Все нижнее белье и футболки на двоих помещаются.", who:"Мария, апрель 2026"},
+      {stars:"★★★★☆", text:"Цвет графит в реальности темнее чем на фото, но мне даже больше понравился.", who:"Сергей, январь 2026"}
+    ]
+  },
+  {
+    id:"sku-d2",
+    name:"Комод КМ-4 — белый текстурный",
+    dims:"80 × 40 × 85 см",
+    price:"7 990 ₽",
+    oldPrice:"9 490 ₽",
+    img:"images/sku-d2.jpg",
+    capacity:{
+      solo:"15 футболок, 10 пар носков и белья, 8 свитеров, 5 джинсов. Половина места свободна",
+      couple:"30 футболок, 25 пар носков и белья, 20 свитеров, 18 джинсов",
+      family:"взрослые вещи в верхних ящиках, детские и игрушки — в нижних, все плотно"
+    },
+    ref:"Минимальный комод на одного — для съeмной квартиры самое то",
+    reviews:[
+      {stars:"★★★★★", text:"Брала под аренду, всe мое белье и трикотаж влезли с запасом. Сборка простая.", who:"Кристина, март 2026"},
+      {stars:"★★★★★", text:"За такие деньги — топ. Ящики идут плавно, ничего не скрипит.", who:"Андрей, февраль 2026"}
+    ]
+  },
+  {
+    id:"sku-d3",
+    name:"Комод К1000-2Д — венге / лоредо",
+    dims:"100 × 45 × 85 см",
+    price:"11 490 ₽",
+    oldPrice:null,
+    img:"images/sku-d3.jpg",
+    capacity:{
+      solo:"20 футболок в ящиках сверху, постельное и крупный трикотаж за дверцами. Половина места свободна",
+      couple:"40 футболок и белья сверху, постельное на двоих + полотенца за дверцами",
+      family:"белье в верхних ящиках, постельное и детские вещи за дверцами. Все плотно"
+    },
+    ref:"Универсальный комод — белье и крупный текстиль вместе. Удобно если шкаф уже забит",
+    reviews:[
+      {stars:"★★★★★", text:"Не комод а склад, постельное на 2 кровати влезло за дверцы + белье сверху.", who:"Татьяна, март 2026"},
+      {stars:"★★★★☆", text:"Цвет венге благородный, в спальню под темную кровать подошeл идеально.", who:"Михаил, январь 2026"}
+    ]
+  }
+];
+
+const grid = document.getElementById("grid");
+grid.innerHTML = SKU.map(s => `
+  <article class="card">
+    <div class="photo"><img src="${s.img}" alt="${s.name}" loading="lazy"></div>
+    <div class="body">
+      <h2 class="name">${s.name}</h2>
+      <div class="dims">${s.dims}</div>
+      <div class="price">${s.price}${s.oldPrice ? `<small>${s.oldPrice}</small>` : ""}</div>
+
+      <div class="capacity">
+        <h3>Что сюда влезет</h3>
+        <div class="scenario"><div class="who">Один</div><div class="what">${s.capacity.solo}</div></div>
+        <div class="scenario"><div class="who">Пара</div><div class="what">${s.capacity.couple}</div></div>
+        <div class="scenario"><div class="who">Семья</div><div class="what">${s.capacity.family}</div></div>
+        <div class="ref">${s.ref}</div>
+      </div>
+
+      <button class="cta">В корзину</button>
+
+      <div class="reviews">
+        <h4>Отзывы</h4>
+        ${s.reviews.map(r => `
+          <div class="review">
+            <span class="stars">${r.stars}</span>
+            ${r.text} <span class="who2">— ${r.who}</span>
+          </div>`).join("")}
+      </div>
+
+      <div class="specs">ЛДСП 16 мм, кромка ПВХ 2 мм, фурнитура Boyard. Гарантия 18 месяцев. Доставка по Москве — от 590 ₽.</div>
+    </div>
+  </article>
+`).join("");
+</script>
+</body>
+</html>
