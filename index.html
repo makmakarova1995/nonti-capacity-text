@@ -5,18 +5,26 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Нонтон — что сюда влезет</title>
 <style>
+  @font-face{
+    font-family:"ALS Sirius";
+    src:url("ALS_Sirius_Medium_1.6.otf") format("opentype");
+    font-weight:400 700;
+    font-display:swap;
+  }
   :root{
-    --accent:#d97757;
-    --ink:#1a1a1a;
-    --muted:#6b6b6b;
+    --accent:#4DABE2;
+    --accent-dark:#2D8AC0;
+    --ink:#000;
+    --muted:#666;
     --line:#ebebeb;
-    --bg:#fafafa;
+    --bg:#fff;
     --card:#fff;
+    --soft:#f4faff;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{
-    font:15px/1.5 -apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,Arial,sans-serif;
+    font:15px/1.5 "ALS Sirius",-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,Arial,sans-serif;
     color:var(--ink);
     background:var(--bg);
     -webkit-font-smoothing:antialiased;
@@ -26,8 +34,8 @@
     border-bottom:1px solid var(--line);
     padding:14px 20px;
   }
-  .logo{font-weight:700;font-size:18px;letter-spacing:-.01em}
-  .logo span{color:var(--accent)}
+  .logo{display:inline-flex;align-items:center}
+  .logo img{display:block;height:28px;width:auto}
   .hint{
     max-width:1200px;margin:0 auto;padding:20px;
     color:var(--muted);font-size:13px;
@@ -59,8 +67,8 @@
   .price small{font-size:12px;font-weight:400;color:var(--muted);margin-left:6px;text-decoration:line-through}
 
   .capacity{
-    background:#fff7f3;
-    border:1px solid #f3dcd0;
+    background:var(--soft);
+    border:1px solid #cbe4f5;
     border-radius:8px;
     padding:14px 14px 12px;
   }
@@ -73,9 +81,9 @@
   .scenario .who{flex:0 0 72px;font-weight:600;color:var(--ink)}
   .scenario .what{color:#2a2a2a}
   .ref{
-    border-top:1px dashed #e8c9b8;
+    border-top:1px dashed #b5d6ec;
     padding-top:9px;margin-top:4px;
-    font-size:12.5px;color:#7a4a36;font-style:italic;
+    font-size:12.5px;color:#2D8AC0;font-style:italic;
   }
 
   .cta{
@@ -83,7 +91,7 @@
     padding:11px 14px;border-radius:6px;
     font:600 14px/1 inherit;cursor:pointer;width:100%;
   }
-  .cta:hover{background:#c46a4d}
+  .cta:hover{background:var(--accent-dark)}
 
   .reviews{font-size:13px;border-top:1px solid var(--line);padding-top:12px}
   .reviews h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600}
@@ -100,7 +108,7 @@
 <body>
 
 <header>
-  <div class="logo">нонтон<span>.</span></div>
+  <a href="https://nonton.ru" class="logo"><img src="nonton-logo.png" alt="Нонтон" height="28"></a>
 </header>
 
 <div class="hint">
@@ -233,7 +241,7 @@ grid.innerHTML = SKU.map(s => `
       <div class="price">${s.price}${s.oldPrice ? `<small>${s.oldPrice}</small>` : ""}</div>
 
       <div class="capacity">
-        <h3>Что сюда влезет</h3>
+        <h3>Что сюда поместится</h3>
         <div class="scenario"><div class="who">Один</div><div class="what">${s.capacity.solo}</div></div>
         <div class="scenario"><div class="who">Пара</div><div class="what">${s.capacity.couple}</div></div>
         <div class="scenario"><div class="who">Семья</div><div class="what">${s.capacity.family}</div></div>
