@@ -7,8 +7,14 @@
 <style>
   @font-face{
     font-family:"ALS Sirius";
+    src:url("ALS_Sirius_VF.ttf") format("truetype-variations");
+    font-weight:100 900;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:"ALS Sirius";
     src:url("ALS_Sirius_Medium_1.6.otf") format("opentype");
-    font-weight:400 700;
+    font-weight:500;
     font-display:swap;
   }
   :root{
@@ -97,7 +103,7 @@
   .reviews h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600}
   .review{margin-bottom:8px;line-height:1.4;color:#333}
   .review:last-child{margin-bottom:0}
-  .review .stars{color:#f5a623;letter-spacing:1px;font-size:11px;display:block;margin-bottom:2px}
+  .review .stars{color:#4DABE2;letter-spacing:1px;font-size:11px;display:block;margin-bottom:2px}
   .review .who2{color:var(--muted);font-size:11px}
 
   .specs{font-size:11.5px;color:var(--muted);line-height:1.5;border-top:1px solid var(--line);padding-top:10px}
@@ -131,7 +137,7 @@ const SKU = [
     capacity:{
       solo:"18 рубашек на штанге, 16 свитеров стопками, коробка обуви. Половина шкафа свободна",
       couple:"36 рубашек, 26 свитеров, 3 коробки обуви, 2 сумки на антресоли",
-      family:"взрослый гардероб на штанге, детская секция на боковых полках, 4 коробки и чемодан сверху"
+      family:"взрослый гардероб на штанге, детская секция на боковых полках, 5 коробок с сезонными вещами сверху"
     },
     ref:"Гардероб на двоих на сезон + место для постельного. Как шкаф 200 см в спальню",
     reviews:[
@@ -149,9 +155,9 @@ const SKU = [
     capacity:{
       solo:"24 рубашки на штанге, 40 футболок и свитеров стопками, коробка обуви. Свободны 2 полки",
       couple:"38 рубашек, 52 свитера стопками, 3 коробки обуви, 2 сумки",
-      family:"взрослые вещи на штанге, детские вещи на нижних полках, 4 коробки и чемодан"
+      family:"взрослые вещи на штанге, детские вещи на нижних полках, 5 коробок с постельным и сезонной обувью"
     },
-    ref:"Гардероб на семью на сезон + крупные коробки и чемодан",
+    ref:"Гардероб на семью на сезон + крупные коробки с постельным",
     reviews:[
       {stars:"★★★★☆", text:"Четыре двери — это удобно, у каждого своя секция. Зеркало в центре пригодилось.", who:"Ольга, январь 2026"},
       {stars:"★★★★★", text:"Покупали под двоих + ребeнок, поместилось все включая постельное и игрушки в коробках сверху.", who:"Дмитрий, апрель 2026"}
@@ -167,7 +173,7 @@ const SKU = [
     capacity:{
       solo:"22 рубашки на штанге, 25 футболок стопками, коробка обуви. Много свободного места",
       couple:"35 рубашек, 40 свитеров, 2 коробки обуви, 1 сумка",
-      family:"взрослый гардероб на штанге, детская секция на полке, 3 коробки и чемодан сверху"
+      family:"взрослый гардероб на штанге, детская секция на полке, 4 коробки с постельным сверху"
     },
     ref:"Базовый гардероб на одного с большим запасом. Для пары — впритык, но поместится",
     reviews:[
